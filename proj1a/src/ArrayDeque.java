@@ -21,7 +21,15 @@ public class ArrayDeque <T> {
         nextLast = 1;
     }
 
-//    public ArrayDeque(ArrayDeque other){}
+    public ArrayDeque(ArrayDeque other) {
+        items = (T[]) new Object[INITIAL_CAPACITY];
+        size = 0;
+        nextFirst = 0;
+        nextLast = 1;
+        for (int i = 0; i < other.size(); i++) {
+            addLast((T) other.get(i));
+        }
+    }
 
     public void resize(int capacity){
         T[] newArr = (T[]) new Object[capacity];

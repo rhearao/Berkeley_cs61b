@@ -32,9 +32,23 @@ public class LinkedListDeque <T> {
         size = 1;
     }
 
-    //create a deep copy of other
-    public LinkedListDeque(LinkedListDeque other){
+    public LinkedListDeque(LinkedListDeque<T> other){
+        sentinel = new Node(0, null, null);
+        sentinel.prev = sentinel;
+        sentinel.next = sentinel;
+        size = 0;
 
+//        for (int i = 0; i < other.size(); i++) {
+//            addLast((T) other.get(i));
+//        }
+
+        Node p = other.sentinel.next;
+        while(p != other.sentinel){
+            sentinel.prev.next = p;
+            sentinel.prev = p;
+            size ++;
+            p = p.next;
+        }
     }
 
     public void addFirst(T item){
@@ -119,5 +133,16 @@ public class LinkedListDeque <T> {
         } else {
             return getRecursive(index-1, p.next);
         }
+    }
+
+    public static void main(String[] args){
+        LinkedListDeque<Integer> copy = new LinkedListDeque<Integer>();
+        copy.addLast(1);
+        copy.addLast(2);
+        copy.addLast(3);
+        copy.addLast(4);
+        LinkedListDeque<Integer> newL = new LinkedListDeque<Integer>(copy);
+        copy.printDeque();
+        newL.printDeque();
     }
 }
