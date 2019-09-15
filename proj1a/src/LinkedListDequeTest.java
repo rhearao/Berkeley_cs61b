@@ -1,4 +1,6 @@
-package src.main;
+package src;
+
+import src.LinkedListDeque;
 
 /** Performs some basic linked list tests. */
 public class LinkedListDequeTest {

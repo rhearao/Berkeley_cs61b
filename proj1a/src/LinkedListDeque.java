@@ -1,6 +1,4 @@
-package src.main;
-
-import edu.princeton.cs.algs4.StdOut;
+package src;
 
 public class LinkedListDeque <T> {
 
